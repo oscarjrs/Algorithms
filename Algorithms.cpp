@@ -7,7 +7,7 @@ int main()
 	const int ARRAY_SIZE = 5;
 	int data[ARRAY_SIZE];
 	
-	std::cout << "Sorting Algorithms" << std::endl;
+	std::cout << "Sorting Algorithms. Version 0.1" << std::endl;
 	std::cout << "Please enter 5 numbers:" << std::endl;
 	
 	for(int i=0;i<ARRAY_SIZE;i++)
