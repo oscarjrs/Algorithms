@@ -37,3 +37,8 @@ int main()
     return 0;
 }
 
+std::vector<int> sort(std::vector<int> input) {
+    std::vector<int> result;
+    ... populate the vector ...
+    return result;
+}
