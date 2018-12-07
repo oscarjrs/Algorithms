@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 
-//int * sort(input[]);
+void insertionSort(std::vector<int>&);
 
 int main()
 {
@@ -12,6 +12,7 @@ int main()
 	//int sorted[ARRAY_SIZE];
 	
 	std::vector<int> data;
+	std::vector<int> sortedData;
 	
 	std::cout << "Sorting Algorithms. Version 0.1" << std::endl;
 	std::cout << "Please enter 10 numbers:" << std::endl;
@@ -24,21 +25,26 @@ int main()
 		std::cout << "Number entered: " + std::to_string(data[i]) << std::endl;
 	}
 	
-	//sorted = sort(data);
-	for(int i=0; i<data.size(); ++i)
-		std::cout << data[i] << ' ';
+	insertionSort(data);
 	
+	for(int j=0;j<data.size();j++)
+		std::cout << data[j] << " ";
 	
-	
-	
-	
-	
-	
-    return 0;
+	return 0;
 }
 
-std::vector<int> sort(std::vector<int> input) {
-    std::vector<int> result;
-    ... populate the vector ...
-    return result;
+void insertionSort(std::vector<int>& input) {
+    
+	for(int j=1;j<input.size();j++)
+	{
+		int key = input[j];
+		int i = j-1;
+		while(i >= 0 && input[i] > key)
+		{
+			input[i+1] = input[i];
+			i--;
+		}
+		input[i+1] = key;
+	}
+	
 }
