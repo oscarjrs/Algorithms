@@ -2,9 +2,11 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <iterator>
 
 void insertionSort(std::vector<int>&);
 int generateData(int, std::string);
+bool fexists(const std::string&);
 
 int main()
 {
@@ -16,18 +18,26 @@ int main()
 	std::vector<int> sortedData;
 	
 	std::cout << "Sorting Algorithms. Version 0.1" << std::endl;
-	/*std::cout << "Please enter 10 numbers:" << std::endl;
 	
-	for(int i=0;i<ARRAY_SIZE;i++)
+	if(!fexists("data.txt"))
 	{
-		int numberEntered;
-		std::cin >> numberEntered;
-		data.push_back(numberEntered);
-		std::cout << "Number entered: " + std::to_string(data[i]) << std::endl;
+		std::cout << "Data.txt does not exist!" << std::endl;
+		std::cout << "Generating data.txt with random integers..." << std::endl;
+		generateData(100, "data.txt");
 	}
-	*/
 	
-	generateData(10, "data.txt");
+	// File that contains integers to be sorted, one per line
+	std::ifstream myfile("data.txt");
+	
+	std::string line;
+	std::vector<std::string> myLines;
+	while (std::getline(myfile, line))
+	{
+	   data.push_back(std::stoi(line));
+	}
+	
+	
+	//generateData(10, "data.txt");
 	insertionSort(data);
 	
 	for(int j=0;j<data.size();j++)
@@ -58,7 +68,12 @@ int generateData(int count, std::string filename)
 	std::ofstream fout;
 	fout.open(filename);
 	for(int i=1;i<=count;i++)
-		fout<< (rand() % 10 + 1) << std::endl;
+		fout<< (rand() % 100 + 1) << std::endl;
 	fout.close();
 	return 0;
+}
+
+bool fexists(const std::string& filename) {
+  std::ifstream ifile(filename.c_str());
+  return (bool)ifile;
 }
