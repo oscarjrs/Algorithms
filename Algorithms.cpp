@@ -4,6 +4,7 @@
 #include <vector>
 
 void insertionSort(std::vector<int>&);
+int generateData(int, std::string);
 
 int main()
 {
@@ -15,7 +16,7 @@ int main()
 	std::vector<int> sortedData;
 	
 	std::cout << "Sorting Algorithms. Version 0.1" << std::endl;
-	std::cout << "Please enter 10 numbers:" << std::endl;
+	/*std::cout << "Please enter 10 numbers:" << std::endl;
 	
 	for(int i=0;i<ARRAY_SIZE;i++)
 	{
@@ -24,7 +25,9 @@ int main()
 		data.push_back(numberEntered);
 		std::cout << "Number entered: " + std::to_string(data[i]) << std::endl;
 	}
+	*/
 	
+	generateData(10, "data.txt");
 	insertionSort(data);
 	
 	for(int j=0;j<data.size();j++)
@@ -47,4 +50,15 @@ void insertionSort(std::vector<int>& input) {
 		input[i+1] = key;
 	}
 	
+}
+
+// Generate a file with a list of random numbers
+int generateData(int count, std::string filename)
+{
+	std::ofstream fout;
+	fout.open(filename);
+	for(int i=1;i<=count;i++)
+		fout<< (rand() % 10 + 1) << std::endl;
+	fout.close();
+	return 0;
 }
