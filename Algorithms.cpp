@@ -17,6 +17,8 @@ int main()
 	std::vector<int> data;
 	std::vector<int> sortedData;
 	
+	std::vector<int>::iterator i;
+	
 	std::cout << "Sorting Algorithms. Version 0.1" << std::endl;
 	
 	if(!fexists("data.txt"))
@@ -37,11 +39,10 @@ int main()
 	}
 	
 	
-	//generateData(10, "data.txt");
 	insertionSort(data);
 	
-	for(int j=0;j<data.size();j++)
-		std::cout << data[j] << " ";
+	for(i = data.begin();i != data.end();++i)
+		std::cout << *i << " ";
 	
 	return 0;
 }
